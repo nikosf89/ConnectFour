@@ -12,6 +12,13 @@ player = 1
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("CONNECT FOUR")
 
+def draw_text(text, x, y, font_size, color):
+    my_font = pygame.font.SysFont("Arial", font_size)
+    my_font_surf = my_font.render(text, True, color)
+    my_font_rect = my_font_surf.get_rect(center = (x, y))
+    screen.blit(my_font_surf, my_font_rect)
+
+
 def draw_board():
     screen.fill("blue")
     for i in range(7):
@@ -39,7 +46,9 @@ def is_valid_location(x, y):
         return True
     else:
         return False
-        
+
+def check_winner():
+    pass
            
 def main_game():
     player = 0
