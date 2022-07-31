@@ -7,7 +7,6 @@ pygame.init()
 WIDTH = 700
 HEIGHT = 600
 BOARD = np.full((6, 7), -1, dtype=np.int8)
-print(BOARD)
 player = 1
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -32,7 +31,15 @@ def make_move(player, x, y):
 
 
 def is_valid_location(x, y):
-    return True
+    x_pos = int(x /100)
+    y_pos = int(y / 100)
+    if y_pos == 5 and BOARD[y_pos, x_pos] == -1:
+        return True
+    elif BOARD[y_pos, x_pos] == -1 and BOARD[y_pos+1, x_pos] != -1:
+        return True
+    else:
+        return False
+        
            
 def main_game():
     player = 0
